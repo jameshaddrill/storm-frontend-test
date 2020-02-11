@@ -1,5 +1,11 @@
 <template>
     <div>
-        <li>To do item</li>
+        <li>{{ task.title }}</li>
     </div>
 </template>
+
+<script>
+    export default {
+        props: ['task']
+    }
+</script>
