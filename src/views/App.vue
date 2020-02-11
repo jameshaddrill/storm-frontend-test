@@ -1,16 +1,15 @@
 <template>
-    <div>
-        <h1>This is the main App.vue template</h1>
-        <h2>{{ test }}</h2>
-    </div>
+    <section>
+        <to-do-list />
+    </section>
 </template>
 
 <script>
+    import ToDoListComponent from '../components/toDoList/ToDoListComponent.vue';
+
    	export default {
-        data() {
-            return {
-                'test' : 'test value'
-            }
+        components: {
+            'to-do-list' : ToDoListComponent
         }
 	}
 </script>
