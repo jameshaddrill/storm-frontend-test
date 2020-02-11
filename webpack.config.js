@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { VueLoaderPlugin } = require('vue-loader');
 const pkg = require('./package.json')
 
 module.exports = {
@@ -17,10 +18,15 @@ module.exports = {
 			title: pkg.name,
 			template: './src/index.html',
 			filename: 'index.html'
-		})
+		}),
+		new VueLoaderPlugin()
 	],
   	module: {
 		rules: [{
+			test: /\.vue$/,
+			use: 'vue-loader'
+		},
+		{
             test: /\.scss$/,
             use: [
                 "style-loader",
