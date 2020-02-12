@@ -1,6 +1,7 @@
 <template>
     <li :class="`task task--${importanceLevel(task.importance)}`">
-        {{ task.title }}        
+        <input type="checkbox" :id="'checkbox--' + task.id" class="task__checkbox" />
+        <label :for="'checkbox--' + task.id">{{ task.title }}</label>
     </li>
 </template>
 
