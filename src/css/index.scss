@@ -1,6 +1,7 @@
 //reset
 @import 'vendor/reset';
 // common styles
+@import 'common/breakpoints';
 @import 'common/mixins';
 @import 'common/colours';
 @import 'common/typography';
@@ -8,3 +9,15 @@
 // component styles
 @import '../components/toDoList/todo-list';
 @import '../components/toDoTask/todo-task';
+
+.container {
+    width: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 15px;
+    box-sizing: border-box;
+
+    @media (min-width: $breakpoint-lg) {
+        padding: 0;
+    }
+}

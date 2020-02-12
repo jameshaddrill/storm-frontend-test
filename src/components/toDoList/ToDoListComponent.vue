@@ -1,7 +1,7 @@
 <template>
-    <section>
-        <h1 class="h1">To do list</h1>
-        <ul class="todo-list">
+    <section class="todo-list">
+        <h1 class="h1 todo-list__title">To do list</h1>
+        <ul>
             <to-do-task 
                 v-for="task in tasks" 
                 :key="task.id" 

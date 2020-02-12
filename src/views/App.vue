@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section class="container">
         <to-do-list />
     </section>
 </template>

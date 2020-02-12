@@ -1,15 +1,41 @@
 .task {
-    background: yellow;
+    margin-bottom: 5px;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 15px;
+
+    &::before {
+        content: '';
+        width: 5px;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
 
     &--high {
         background: $highImportance;
+
+        &::before {
+            background: darken($highImportance, 10%);
+        }
     }
 
     &--medium {
         background: $mediumImportance;
+
+        &::before {
+            background: darken($mediumImportance, 20%);
+        }
     }
 
     &--low {
         background: $lowImportance;
+
+        &::before {
+            background: darken($lowImportance, 10%);
+        }
     }
 }
