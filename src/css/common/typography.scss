@@ -1,0 +1,7 @@
+body {
+    @include font-size(16);
+}
+
+.h1 {
+    @include font-size(30);
+}

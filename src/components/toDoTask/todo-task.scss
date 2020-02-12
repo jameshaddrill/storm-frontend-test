@@ -1,0 +1,15 @@
+.task {
+    background: yellow;
+
+    &--high {
+        background: $highImportance;
+    }
+
+    &--medium {
+        background: $mediumImportance;
+    }
+
+    &--low {
+        background: $lowImportance;
+    }
+}

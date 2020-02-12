@@ -1,14 +1,18 @@
 <template>
     <section>
-        <h1>To do list</h1>
-        <ul v-for="task in tasks" :key="task.id">
-            <to-do-item :task="task" />
+        <h1 class="h1">To do list</h1>
+        <ul class="todo-list">
+            <to-do-task 
+                v-for="task in tasks" 
+                :key="task.id" 
+                :task="task" 
+            />
         </ul>
     </section>
 </template>
 
 <script>
-    import ToDoItemComponent from '../toDoItem/ToDoItemComponent.vue';
+    import toDoTaskComponent from '../toDoTask/toDoTaskComponent.vue';
     import axios from 'axios';
 
     const tasksAPI = axios.create({baseURL: 'http://localhost:4000/api'});
@@ -20,7 +24,7 @@
             }
         },
         components: {
-            'to-do-item': ToDoItemComponent
+            'to-do-task': toDoTaskComponent
         },
         created() {
             tasksAPI.get('task').then(response => {
