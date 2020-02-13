@@ -1,6 +1,8 @@
 <template>
     <section class="todo-list">
         <h1 class="h1 todo-list__title">To do list</h1>
+        <button class="todo-list__btn" @click= "formHidden = !formHidden">Add item</button>
+        <add-task-form v-if="!formHidden" />
         <transition name="fade" mode="out-in">
             <ul v-if="dataLoaded" >
                 <to-do-task 
@@ -21,17 +23,20 @@
 
 <script>
     import toDoTaskComponent from '../toDoTask/toDoTaskComponent.vue';
+    import addTaskComponent from '../addTask/AddTaskComponent.vue';
     import axios from 'axios';
 
     export default {
         data: function() {
             return {
                 'tasks' : [],
-                'dataLoaded' : false
+                'dataLoaded' : false,
+                'formHidden' : true
             }
         },
         components: {
-            'to-do-task': toDoTaskComponent
+            'to-do-task': toDoTaskComponent,
+            'add-task-form': addTaskComponent
         },
         created() {
             this.getTasks();
