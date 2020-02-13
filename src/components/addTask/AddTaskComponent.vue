@@ -15,9 +15,9 @@
         <div class="form__section">
             <label for="task-importance">Importance</label>
             <select id="task-importance" value="" v-model="taskImportance">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
+                <option value="0">High</option>
+                <option value="1">Medium</option>
+                <option value="2">Low</option>
             </select>
         </div>
         <div class="form__section">

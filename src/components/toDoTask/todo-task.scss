@@ -7,7 +7,7 @@
     line-height: 1.2;
     box-sizing: border-box;
     @include font-size(18, 22);
-    padding: 10px 15px;
+    padding: 10px 85px 10px 15px;
 
     &::before {
         content: '';
@@ -24,6 +24,14 @@
         &::before {
             background: darken($highImportance, 10%);
         }
+
+        .task__delete {
+            border-color: darken($highImportance, 10%);
+
+            &:hover {
+                background-color: darken($highImportance, 10%);
+            }
+        }
     }
 
     &--medium {
@@ -32,6 +40,14 @@
         &::before {
             background: darken($mediumImportance, 20%);
         }
+
+        .task__delete {
+            border-color: darken($mediumImportance, 20%);
+
+            &:hover {
+                background-color: darken($mediumImportance, 20%);
+            }
+        }
     }
 
     &--low {
@@ -39,6 +55,14 @@
 
         &::before {
             background: darken($lowImportance, 10%);
+        }
+
+        .task__delete {
+            border-color: darken($lowImportance, 10%);
+
+            &:hover {
+                background-color: darken($lowImportance, 10%);
+            }
         }
     }
 
@@ -71,6 +95,23 @@
             top: 0px;
             left: 3px;
             color: #333;
+        }
+    }
+
+    &__delete {
+        cursor: pointer;
+        background: #fff;
+        border-width: 2px;
+        border-style: solid;
+        border-radius: 4px;        
+        position: absolute;
+        right: 15px;
+        padding: 5px 10px;
+        transition: background 0.5s ease;
+        color: #333;
+
+        &:hover {
+            color: #fff;
         }
     }
 

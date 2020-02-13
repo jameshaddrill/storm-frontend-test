@@ -9,12 +9,14 @@
             @formSubmitted="addTask" 
         />
         <transition name="fade" mode="out-in">
-            <ul v-if="dataLoaded" >
+            <h2 v-if="dataLoaded && tasks.length < 1" class="h1">Your list is empty! Please add a task.</h2>
+            <ul v-else-if="dataLoaded" >
                 <to-do-task 
                     v-for="(task) in tasks" 
                     :key="task.id"
                     :task="task"
                     @checkboxChanged="updateTask"
+                    @deleteClicked="deleteTask"
                 />
             </ul>
             <div v-else class="todo-list__loading-container">
@@ -69,11 +71,23 @@
             },
             addTask: function(taskDetails) {
                 this.tasks.push(taskDetails);
-                console.log(taskDetails);
                 axios.post('http://localhost:4000/api/task', taskDetails).then(response => {
                     console.log(response);
                     // get all tasks again so task id of new item is set
                     this.getTasks();
+                }).catch((error) => {
+                    console.log('error with adding data');
+                    console.log(error);
+                });
+            },
+            deleteTask: function(id) {
+                const deletedIndex = this.tasks.findIndex(task => task.id === id);
+                this.tasks.splice(deletedIndex, 1);
+
+                axios.delete('http://localhost:4000/api/task/' + id).then(response => {
+                }).catch((error) => {
+                    console.log('error with deleting data');
+                    console.log(error);
                 });
             }
         }

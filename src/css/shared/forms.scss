@@ -3,10 +3,16 @@
         margin-right: 10px;
     }
 
-    input, select {
+    input,
+    select {
         height: 40px;
         line-height: 40px;
         padding: 0 15px;
+    }
+
+    input[type="text"],
+    select {
+        border: 1px solid #ccc;
     }
 
     &__section {

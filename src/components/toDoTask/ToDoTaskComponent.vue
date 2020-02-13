@@ -8,6 +8,9 @@
             @change="checkboxClicked($event)"
         />
         <label :for="'checkbox--' + task.id" class="task__label">{{ task.title }}</label>
+        <button class="task__delete" @click="deleteClicked(task.id)">
+            Delete
+        </button>
     </li>
 </template>
 
@@ -30,6 +33,9 @@
                 }
 
                 this.$emit('checkboxChanged', checkboxInfo);
+            },
+            deleteClicked: function(id) {
+                this.$emit('deleteClicked', id);
             }
         }
     }
