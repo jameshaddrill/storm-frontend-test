@@ -1,13 +1,20 @@
 <template>
     <section class="todo-list">
         <h1 class="h1 todo-list__title">To do list</h1>
-        <ul>
-            <to-do-task 
-                v-for="task in tasks" 
-                :key="task.id" 
-                :task="task" 
-            />
-        </ul>
+        <transition name="fade" mode="out-in">
+            <ul v-if="dataLoaded" >
+                <to-do-task 
+                    v-for="task in tasks" 
+                    :key="task.id" 
+                    :task="task" 
+                />
+            </ul>
+            <div v-else class="todo-list__loading-container">
+                <p class="todo-list__title">
+                    Your to do list is loading...
+                </p>
+            </div>
+        </transition>
     </section>
 </template>
 
@@ -20,7 +27,8 @@
     export default {
         data: function() {
             return {
-                'tasks' : []
+                'tasks' : [],
+                'dataLoaded' : false
             }
         },
         components: {
@@ -29,6 +37,7 @@
         created() {
             tasksAPI.get('task').then(response => {
                 this.tasks = response.data;
+                this.dataLoaded = true;
             });
         }
     }

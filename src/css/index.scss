@@ -5,10 +5,12 @@
 @import 'common/mixins';
 @import 'common/colours';
 @import 'common/typography';
+@import 'common/transitions';
 
 // component styles
 @import '../components/toDoList/todo-list';
 @import '../components/toDoTask/todo-task';
+@import '../components/overlay/overlay';
 
 .container {
     width: 100%;

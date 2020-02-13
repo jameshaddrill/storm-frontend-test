@@ -1,7 +1,9 @@
 <template>
-    <section class="container">
-        <to-do-list />
-    </section>
+    <main>
+        <section class="container">
+            <to-do-list />
+        </section>
+    </main>
 </template>
 
 <script>

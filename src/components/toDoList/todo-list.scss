@@ -6,6 +6,14 @@
     display: flex;
     flex-direction: column;
 
+    &__loading-container {
+        min-height: 100px;
+        background: #cbcbcb;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     &__title {
         margin-bottom: 25px;
         padding: 0 15px;
