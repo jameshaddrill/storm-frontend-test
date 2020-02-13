@@ -44,7 +44,7 @@
 
     &--done {
         .task__label {
-            opacity: 0.5;
+            text-decoration: line-through;
         }
     }
 
