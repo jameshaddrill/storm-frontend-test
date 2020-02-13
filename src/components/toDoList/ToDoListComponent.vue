@@ -4,9 +4,10 @@
         <transition name="fade" mode="out-in">
             <ul v-if="dataLoaded" >
                 <to-do-task 
-                    v-for="task in tasks" 
-                    :key="task.id" 
-                    :task="task" 
+                    v-for="(task) in tasks" 
+                    :key="task.id"
+                    :task="task"
+                    @checkboxChanged="updateTask"
                 />
             </ul>
             <div v-else class="todo-list__loading-container">
@@ -22,8 +23,6 @@
     import toDoTaskComponent from '../toDoTask/toDoTaskComponent.vue';
     import axios from 'axios';
 
-    const tasksAPI = axios.create({baseURL: 'http://localhost:4000/api'});
-
     export default {
         data: function() {
             return {
@@ -35,10 +34,29 @@
             'to-do-task': toDoTaskComponent
         },
         created() {
-            tasksAPI.get('task').then(response => {
-                this.tasks = response.data;
-                this.dataLoaded = true;
-            });
+            this.getTasks();
+        },
+        methods: {
+            getTasks: function() {
+                axios.get('http://localhost:4000/api/task').then(response => {
+                    this.tasks = response.data;
+                    this.dataLoaded = true;
+                }).catch((error) => {
+                    console.log('error with loading data');
+                    console.log(error);
+                });
+            },
+            updateTask: function(info) {
+                const updatedItem = this.tasks.find(task => task.id === info.id);
+                updatedItem.isDone = info.checked;
+
+                axios.patch('http://localhost:4000/api/task/' + info.id, 
+                    { isDone : info.checked }
+                ).catch((error) => {
+                    console.log('error with patching data');
+                    console.log(error);
+                });
+            }
         }
     }
 </script>
