@@ -1,7 +1,12 @@
 body {
     @include font-size(16);
+    font-family: "Roboto", sans-serif;
 }
 
 .h1 {
     @include font-size(30);
+}
+
+p, label, li {
+    font-weight: 300;
 }
