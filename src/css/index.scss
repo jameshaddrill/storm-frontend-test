@@ -1,5 +1,6 @@
 //reset
 @import 'vendor/reset';
+
 // common styles
 @import 'common/breakpoints';
 @import 'common/mixins';
@@ -7,9 +8,14 @@
 @import 'common/typography';
 @import 'common/transitions';
 
+// shared elements
+@import 'shared/buttons';
+@import 'shared/forms';
+
 // component styles
 @import '../components/toDoList/todo-list';
 @import '../components/toDoTask/todo-task';
+@import '../components/addTask/add-task';
 
 .container {
     width: 100%;

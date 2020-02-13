@@ -1,7 +1,9 @@
 <template>
     <section class="todo-list">
-        <h1 class="h1 todo-list__title">To do list</h1>
-        <button class="todo-list__btn" @click= "formHidden = !formHidden">Add item</button>
+        <div class="todo-list__header">
+            <h1 class="h1 todo-list__title">To do list</h1>
+            <button class="btn btn--plus" @click= "formHidden = !formHidden">Add item</button>
+        </div>
         <add-task-form 
             v-if="!formHidden"
             @formSubmitted="addTask" 

@@ -1,0 +1,12 @@
+.add-task {
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    &__error-container {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+}

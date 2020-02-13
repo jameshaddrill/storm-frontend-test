@@ -1,0 +1,49 @@
+.btn {
+    min-height: 50px;
+    box-sizing: border-box;
+    border-radius: 500px;
+    padding: 0 15px;
+    box-shadow: 2px 2px 5px 0px rgba(204,204,204,1);
+    border: 1px solid #bcbcbc;
+    @include font-size(20, 22);
+    cursor: pointer; 
+    transition: background-color 0.75s ease;
+    display: flex;
+    align-items: center;
+    background-color: $primaryColor;
+    color: $secondaryColor;
+
+    &:hover {
+        background-color: $secondaryColor;
+        color: $primaryColor;
+    }
+
+    &--plus {
+        &::before {
+            content: '+';
+            @include font-size(30, 30);
+            margin: 0 15px 0 0;
+        }
+    }
+
+    &--small {
+        min-height: 40px;
+        padding: 0 25px;
+        @include font-size(16, 18);
+    }
+
+    &--secondary {
+        background-color: transparent;
+        color: $secondaryColor;
+        border: 1px solid $secondaryColor;
+
+        &:hover {
+            background-color:  $secondaryColor;
+            color: $primaryColor;
+        }
+    }
+
+    @media(min-width: $breakpoint-md) {
+        padding: 0 35px;
+    }
+}

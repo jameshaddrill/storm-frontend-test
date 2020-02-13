@@ -1,0 +1,49 @@
+.form {
+    label {
+        margin-right: 10px;
+    }
+
+    input, select {
+        height: 40px;
+        line-height: 40px;
+        padding: 0 15px;
+    }
+
+    &__section {
+        display: flex;
+        align-items: center;
+    }
+
+    &__section--large {
+        width: 100%;
+        margin-bottom: 10px;
+
+        input {
+            flex-grow: 1;
+        }
+    }
+
+    @media(min-width: $breakpoint-sm) {
+        &__section {
+            margin-right: 15px;
+
+            &--large {
+                flex-grow: 2;
+                width: 45%;
+                margin-bottom: 0;
+
+                input {
+                    width: 80%;
+                }
+            }
+        }
+    }
+
+    @media(min-width: $breakpoint-md) {
+        &__section {
+            &--large {
+                width: 65%;
+            }
+        }
+    }
+}
