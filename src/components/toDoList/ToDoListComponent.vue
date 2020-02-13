@@ -2,7 +2,10 @@
     <section class="todo-list">
         <h1 class="h1 todo-list__title">To do list</h1>
         <button class="todo-list__btn" @click= "formHidden = !formHidden">Add item</button>
-        <add-task-form v-if="!formHidden" />
+        <add-task-form 
+            v-if="!formHidden"
+            @formSubmitted="addTask" 
+        />
         <transition name="fade" mode="out-in">
             <ul v-if="dataLoaded" >
                 <to-do-task 
@@ -60,6 +63,15 @@
                 ).catch((error) => {
                     console.log('error with patching data');
                     console.log(error);
+                });
+            },
+            addTask: function(taskDetails) {
+                this.tasks.push(taskDetails);
+                console.log(taskDetails);
+                axios.post('http://localhost:4000/api/task', taskDetails).then(response => {
+                    console.log(response);
+                    // get all tasks again so task id of new item is set
+                    this.getTasks();
                 });
             }
         }

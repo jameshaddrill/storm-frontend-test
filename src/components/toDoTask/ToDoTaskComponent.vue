@@ -1,5 +1,5 @@
 <template>
-    <li :class="['task', task.isDone === 'true' ? 'task--done' : '', importanceLevel(task.importance)]">
+    <li :class="['task', task.isDone === 'true' ? 'task--done' : '', 'task--' + importanceLevels[task.importance]]">
         <input 
             type="checkbox" 
             :id="'checkbox--' + task.id"
@@ -14,11 +14,12 @@
 <script>
     export default {
         props: ['task'],
+        data: function() {
+            return {
+                importanceLevels : ['high', 'medium', 'low']
+            }
+        },
         methods: {
-            importanceLevel: function(level) {
-                const importance = ['high', 'medium', 'low'];
-                return (level + 1 <= importance.length) ? 'task--' + importance[level] : '';
-            },
             checkboxClicked: function(event) {
                 const cleanId = event.target.id.replace('checkbox--','');
                 const checked = event.target.checked ? 'true' : 'false';
